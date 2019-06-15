@@ -5,7 +5,7 @@ const Glob = require("glob");
 
 api.get("/", (req, res) => {
     res.json({
-        "msg": "Welcome to Wi Proxy"
+        "msg": "Welcome to Wi Sync"
     });
 });
 
