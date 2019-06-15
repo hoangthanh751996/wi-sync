@@ -15,6 +15,7 @@ queue.process("export-db", CONCURRENT_TASKS_EXECUTE, async (task, done) => {
         const {data} = task;
         console.log("process export db", data);
         await execShellCommand(`mysqldump -u ${MYSQL_USER} -p${MYSQL_PASSWORD} -h ${MYSQL_HOST} -P ${MYSQL_PORT} ${MYSQL_PREFIX}${data.username} > ${MYSQL_PREFIX}${data.username}.sql`, {cwd: PATH_EXPORTS});
+        console.log("***** Done Export DB ******");
         mqttServices.publish("export-db", {...data, done: true});
     } catch (err) {
         done(err);
