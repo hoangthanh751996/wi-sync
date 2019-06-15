@@ -4,6 +4,7 @@ const client  = mqtt.connect(process.env.MQTT_HOST || config.get("mqtt.host"), {
 
 const publish = (topic, payload) => {
     client.on('connect', function () {
+        console.log("broadcast to Subscriber");
         client.publish(topic, JSON.stringify(payload));
     });
 };
